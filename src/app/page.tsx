@@ -33,7 +33,7 @@ export default function Home() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/bg.jpg"
+          src="/next.js-login-page/bg.jpg"
           alt="Background"
           fill
           className="object-cover"
@@ -45,7 +45,7 @@ export default function Home() {
 
       {/* Logo */}
       <div className="absolute top-8 left-8 z-20 animate-fade-in">
-        <Image src="/logo.png" alt="Crow Logo" width={50} height={50} />
+        <Image src="/next.js-login-page/logo.png" alt="Crow Logo" width={50} height={50} />
       </div>
 
       {/* Main Content */}
