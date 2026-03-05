@@ -2,30 +2,63 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import OTPInput from "@/components/OTPInput";
 import CountdownTimer from "@/components/CountdownTimer";
 
 export default function Home() {
+  const router = useRouter();
+  const [email] = useState("john.doe@company.com");
   const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const handleOTPComplete = (code: string) => {
     setOtp(code);
+    setError("");
   };
 
   const handleSubmit = async () => {
-    if (otp.length !== 6) return;
+    if (otp.length !== 6) {
+      setError("Please enter complete OTP");
+      return;
+    }
     
     setLoading(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log("OTP Submitted:", otp);
-    setLoading(false);
+    setError("");
+    
+    try {
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      
+      // Simulate validation (replace with real API)
+      if (otp === "123456") {
+        setSuccess(true);
+        setTimeout(() => {
+          // Redirect to dashboard or home
+          console.log("Verification successful!");
+        }, 1000);
+      } else {
+        setError("Invalid OTP. Please try again.");
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleResend = () => {
-    console.log("Resending OTP...");
+  const handleResend = async () => {
     setOtp("");
+    setError("");
+    setSuccess(false);
+    // Simulate resend API call
+    console.log("OTP resent to", email);
+  };
+
+  const handleBack = () => {
+    router.back();
   };
 
   return (
@@ -52,7 +85,10 @@ export default function Home() {
       <div className="relative z-10 flex items-center justify-center h-full px-4">
         <div className="glass-card rounded-3xl p-10 w-full max-w-md animate-fade-in-delay-1">
           {/* Back Button */}
-          <button className="mb-6 text-gray-400 hover:text-white transition-colors flex items-center gap-2">
+          <button 
+            onClick={handleBack}
+            className="mb-6 text-gray-400 hover:text-white transition-colors flex items-center gap-2"
+          >
             <svg
               className="w-5 h-5"
               fill="none"
@@ -74,13 +110,19 @@ export default function Home() {
             <h1 className="text-3xl font-bold mb-2">Verify your email</h1>
             <p className="text-gray-400 text-sm">
               We&apos;ve sent a 6-digit code to{" "}
-              <span className="text-white font-medium">user@example.com</span>
+              <span className="text-white font-medium">{email}</span>
             </p>
           </div>
 
           {/* OTP Input */}
           <div className="mb-6 animate-fade-in-delay-3">
             <OTPInput length={6} onComplete={handleOTPComplete} />
+            {error && (
+              <p className="text-red-400 text-sm mt-3 text-center">{error}</p>
+            )}
+            {success && (
+              <p className="text-green-400 text-sm mt-3 text-center">✓ Verification successful!</p>
+            )}
           </div>
 
           {/* Timer */}
@@ -94,14 +136,16 @@ export default function Home() {
           {/* Next Button */}
           <button
             onClick={handleSubmit}
-            disabled={otp.length !== 6 || loading}
+            disabled={otp.length !== 6 || loading || success}
             className="btn-next w-full py-4 rounded-xl text-white font-semibold text-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 animate-fade-in-delay-4"
           >
             {loading ? (
               <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+            ) : success ? (
+              "Verified ✓"
             ) : (
               <>
-                Next
+                Verify
                 <svg
                   className="w-5 h-5"
                   fill="none"
