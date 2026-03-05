@@ -73,7 +73,7 @@ export default function Home() {
           <div className="mb-8 animate-fade-in-delay-2">
             <h1 className="text-3xl font-bold mb-2">Verify your email</h1>
             <p className="text-gray-400 text-sm">
-              We've sent a 6-digit code to{" "}
+              We&apos;ve sent a 6-digit code to{" "}
               <span className="text-white font-medium">user@example.com</span>
             </p>
           </div>
