@@ -81,7 +81,7 @@ const OTPInput: React.FC<OTPInputProps> = ({ length = 6, onComplete }) => {
   };
 
   return (
-    <div className="flex items-center justify-center gap-3">
+    <div className="flex items-center justify-center gap-2 sm:gap-3">
       {otp.map((digit, index) => (
         <input
           key={index}
