@@ -69,9 +69,10 @@ export default function Home() {
           src="/next.js-login-page/bg.jpg"
           alt="Background"
           fill
-          className="object-cover"
+          className="object-cover object-center"
           priority
           quality={100}
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-purple-900/20 to-black/80" />
       </div>
