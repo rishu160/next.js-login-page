@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0a0a14;
+  color: #ffffff;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* OTP Input Custom Styling */
+.otp-input {
+  width: 56px;
+  height: 64px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(30, 20, 60, 0.7);
+  border: 1.5px solid rgba(120, 80, 200, 0.25);
+  border-radius: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+  caret-color: #a78bfa;
+}
+
+.otp-input:focus {
+  border-color: rgba(167, 139, 250, 0.7);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), inset 0 0 15px rgba(139, 92, 246, 0.1);
+  background: rgba(40, 25, 80, 0.8);
+}
+
+.otp-input::placeholder {
+  color: rgba(255, 255, 255, 0.15);
+}
+
+/* Glowing Card Effect */
+.glass-card {
+  background: linear-gradient(
+    160deg,
+    rgba(20, 15, 40, 0.95) 0%,
+    rgba(15, 10, 35, 0.97) 50%,
+    rgba(10, 8, 25, 0.98) 100%
+  );
+  border: 1px solid rgba(120, 80, 200, 0.2);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* Next Button Gradient */
+.btn-next {
+  background: linear-gradient(
+    135deg,
+    rgba(80, 50, 160, 0.9) 0%,
+    rgba(60, 35, 130, 0.85) 40%,
+    rgba(45, 25, 100, 0.8) 100%
+  );
+  border: 1px solid rgba(140, 100, 220, 0.2);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-next::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.btn-next:hover::before {
+  left: 100%;
+}
+
+.btn-next:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(100, 65, 190, 0.95) 0%,
+    rgba(75, 45, 155, 0.9) 40%,
+    rgba(55, 35, 120, 0.85) 100%
+  );
+  box-shadow: 0 8px 30px rgba(100, 60, 180, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-next:active {
+  transform: translateY(0);
+}
+
+/* Background overlay animation */
+@keyframes subtleFloat {
+  0%, 100% { transform: scale(1.02); }
+  50% { transform: scale(1.05); }
+}
+
+.bg-animate {
+  animation: subtleFloat 20s ease-in-out infinite;
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-delay-1 {
+  animation: fadeInUp 0.8s ease-out 0.1s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-delay-2 {
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-delay-3 {
+  animation: fadeInUp 0.8s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-delay-4 {
+  animation: fadeInUp 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+}
