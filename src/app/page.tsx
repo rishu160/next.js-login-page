@@ -63,6 +63,19 @@ export default function Home() {
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-gradient-to-b from-[#0a0a14] via-[#1a0a2e] to-[#0a0a14]">
+      {/* Background Image — /bg.jpg (wizard-themed dark purple illustration) */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/next.js-login-page/bg.jpg"
+          alt="Background"
+          fill
+          className="object-cover bg-animate"
+          priority
+        />
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
+
       {/* Logo */}
       <div className="absolute top-8 left-8 z-20 animate-fade-in">
         <Image src="/next.js-login-page/logo.png" alt="Crow Logo" width={50} height={50} />
